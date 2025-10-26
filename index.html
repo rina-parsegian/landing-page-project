@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <a href="#" ara-label="Go to homepage">
+      <a href="#" aria-label="Go to homepage">
         <img src="logo.svg" alt="Brand logo" width="120" />
       </a>
       <p id="tagline">Quick wins for higher conversions</p>
@@ -36,7 +36,7 @@
       </section>
 
       <section aria-labelledby="form-title">
-        <h2 id="form-title">Get your free guide</h2>
+        <h2 id="form-title">Get Your Free Guide</h2>
         <form id="lead-form" novalidate>
           <div>
             <label for="name">Name</label>
@@ -84,11 +84,12 @@
     </main>
 
     <aside id="success" aria-live="polite" hidden>
-      <h2>Check your inbox 🎉</h2>
+      <h2 tabindex="-1">Check your inbox 🎉</h2>
       <p>
         We just sent the guide to <span id="success-email">your email</span>. If
         you don't see it in 2-3 minutes, check spam.
       </p>
+      <button id="resetBtn" hidden>Submit another email</button>
     </aside>
 
     <footer>
@@ -98,5 +99,12 @@
       </nav>
       <p>© <span id="year"></span> Your Brand</p>
     </footer>
+
+    <!-- Placeholder for JS (Day 2):
+      - set current year
+      - validate form & show success
+      - disable button while “sending”
+    -->
+    <script src="app.js" defer></script>
   </body>
 </html>
