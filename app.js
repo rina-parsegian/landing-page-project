@@ -14,32 +14,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.getElementById("submitBtn");
   const resetBtn = document.getElementById("resetBtn");
 
+  // Grab the whole section that contains the form + heading
+  const formSection = form.closest("section");
+
+  // Safety check in case elements aren't found
   if (!form || !successBox || !successEmail || !submitBtn || !resetBtn) return;
 
+  // Handle submit event
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    // Built-in HTML validation
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
+    // Simulate sending...
     submitBtn.disabled = true;
-    submitBtn.textContent = "Sending…";
+    submitBtn.textContent = "Sending...";
 
+    // After short delay, show success box and hide form section
     setTimeout(() => {
       successBox.hidden = false;
       successEmail.textContent = form.email.value.trim();
-      form.style.display = "none";
+
+      if (formSection) formSection.hidden = true; // hide heading + form
       resetBtn.hidden = false;
+
+      // Move focus to the success heading for accessibility
       const h2 = successBox.querySelector("h2");
       if (h2) h2.focus();
     }, 1200);
   });
 
+  // Handle reset button
   resetBtn.addEventListener("click", () => {
     form.reset();
-    form.style.display = "";
+    if (formSection) formSection.hidden = false; // show heading + form again
+
     submitBtn.disabled = false;
     submitBtn.textContent = "Get the Guide";
 
